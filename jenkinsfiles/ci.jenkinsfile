@@ -124,9 +124,9 @@ pipeline{
                     //    error " 代码质量阈错误！请及时修复！"
                         
                         
-                    } else {
-                       println("aaaaa")
-                    }
+                   // } else {
+                   //    println("aaaaa")
+                   // }
                 
                 
 
