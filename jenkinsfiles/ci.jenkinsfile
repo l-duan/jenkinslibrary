@@ -42,7 +42,6 @@ String artifactUrl = "${env.artifactUrl}"
 pipeline{
     agent { node { label "master"}}
     
-    
     stages{
 
         stage("CheckOut"){
@@ -127,9 +126,6 @@ pipeline{
                    // } else {
                    //    println("aaaaa")
                    // }
-                
-                
-
                 }
            }
        }
@@ -147,7 +143,7 @@ pipeline{
                // if ("${runOpts}" == "GitlabPush"){
                //     gitlab.ChangeCommitStatus(projectId,commitSha,"success")
                // }
-                toemail.Email("流水线成功")
+                tools.PrintMes("流水线成功","green")
             
             }
         
@@ -158,7 +154,8 @@ pipeline{
                 //if ("${runOpts}" == "GitlabPush"){
                 //    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
                 //}
-                toemail.Email("流水线失败了！")
+                //toemail.Email("流水线失败了！")
+                tools.PrintMes("流水线失败了！","red")
             }
         }
         
@@ -168,7 +165,8 @@ pipeline{
                // if ("${runOpts}" == "GitlabPush"){
                //     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
                // }
-               toemail.Email("流水线被取消了！")
+               //toemail.Email("流水线被取消了！")
+               tools.PrintMes("流水线被取消了！！","red")
             }
         
         }
