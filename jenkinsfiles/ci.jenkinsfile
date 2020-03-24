@@ -33,13 +33,13 @@ if ("${runOpts}" == "GitlabPush"){
 
     
 } else {
-   userEmail = "2560350642@qq.com"
+   userEmail = "duanlian@hrgame.com.cn"
 }
 
 
 //pipeline
 pipeline{
-    agent { node { label "build"}}
+    agent { node { label "master"}}
     
     
     stages{
