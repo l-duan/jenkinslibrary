@@ -22,7 +22,7 @@ String deployHosts = "${env.deployHosts}"
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 String artifactUrl = "${env.artifactUrl}"
-String userEmail = "duanlian@hrgame.com.cn"
+//String userEmail = "duanlian@hrgame.com.cn"
 
 
 /*if ("${runOpts}" == "GitlabPush"){
@@ -147,7 +147,7 @@ pipeline{
                // if ("${runOpts}" == "GitlabPush"){
                //     gitlab.ChangeCommitStatus(projectId,commitSha,"success")
                // }
-                toemail.Email("流水线成功",userEmail)
+                toemail.Email("流水线成功")
             
             }
         
@@ -158,7 +158,7 @@ pipeline{
                 //if ("${runOpts}" == "GitlabPush"){
                 //    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
                 //}
-                toemail.Email("流水线失败了！",userEmail)
+                toemail.Email("流水线失败了！")
             }
         }
         
@@ -168,7 +168,7 @@ pipeline{
                // if ("${runOpts}" == "GitlabPush"){
                //     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
                // }
-               toemail.Email("流水线被取消了！",userEmail)
+               toemail.Email("流水线被取消了！")
             }
         
         }
