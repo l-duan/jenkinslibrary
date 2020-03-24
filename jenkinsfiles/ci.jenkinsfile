@@ -24,7 +24,7 @@ String branchName = "${env.branchName}"
 String artifactUrl = "${env.artifactUrl}"
 
 
-if ("${runOpts}" == "GitlabPush"){
+/*if ("${runOpts}" == "GitlabPush"){
     branchName = branch - "refs/heads/"
     
     currentBuild.description = "Trigger by ${userName} ${branch}"
@@ -35,7 +35,7 @@ if ("${runOpts}" == "GitlabPush"){
 } else {
    userEmail = "duanlian@hrgame.com.cn"
 }
-
+*/
 
 //pipeline
 pipeline{
@@ -49,7 +49,7 @@ pipeline{
                 script{
                    
                     
-                    println("${branchName}")
+ //                   println("${branchName}")
                 
                     tools.PrintMes("获取代码","green")
  //                   checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], 
@@ -112,7 +112,7 @@ pipeline{
                     //sonar.SonarScan("test","${JOB_NAME}","${JOB_NAME}","src")
                     
 
-                    sleep 30
+                    //sleep 30
                     tools.PrintMes("获取扫描结果","green")
                     //result = sonarapi.GetProjectStatus("${JOB_NAME}")
                     
@@ -143,9 +143,9 @@ pipeline{
         success{
             script{
                 println("success")
-                if ("${runOpts}" == "GitlabPush"){
-                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")
-                }
+               // if ("${runOpts}" == "GitlabPush"){
+               //     gitlab.ChangeCommitStatus(projectId,commitSha,"success")
+               // }
                 toemail.Email("流水线成功",userEmail)
             
             }
@@ -154,9 +154,9 @@ pipeline{
         failure{
             script{
                 println("failure")
-                if ("${runOpts}" == "GitlabPush"){
-                    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
-                }
+                //if ("${runOpts}" == "GitlabPush"){
+                //    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
+                //}
                 toemail.Email("流水线失败了！",userEmail)
             }
         }
@@ -164,9 +164,9 @@ pipeline{
         aborted{
             script{
                 println("aborted")
-                if ("${runOpts}" == "GitlabPush"){
-                    gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
-                }
+               // if ("${runOpts}" == "GitlabPush"){
+               //     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
+               // }
                toemail.Email("流水线被取消了！",userEmail)
             }
         
