@@ -22,7 +22,7 @@ String deployHosts = "${env.deployHosts}"
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 String artifactUrl = "${env.artifactUrl}"
-//String userEmail = "duanlian@hrgame.com.cn"
+String userEmail = "duanlian@hrgame.com.cn"
 
 
 /*if ("${runOpts}" == "GitlabPush"){
