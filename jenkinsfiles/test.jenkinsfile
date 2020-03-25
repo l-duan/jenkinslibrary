@@ -34,7 +34,6 @@ pipeline{
             steps{
                 script{
                     tools.PrintMes("更新配置文件","green")
-
                 }
             }
         }
@@ -60,15 +59,7 @@ pipeline{
           
         stage("QA"){
             steps {
-                script{
-                    tools.PrintMes("搜索项目","green")
-
-                    
-                    tools.PrintMes("配置项目质量规则","green")
-
-                    tools.PrintMes("配置质量阈","green")
-                    //sonarapi.ConfigQualityGates("${JOB_NAME}",qpName)
-                
+                script{             
                     tools.PrintMes("代码扫描","green")
                     //sonar.SonarScan("test","${JOB_NAME}","${JOB_NAME}","src")
                     
@@ -101,7 +92,7 @@ pipeline{
         
         success{
             script{
-                println("success")
+               // println("success")
                // if ("${runOpts}" == "GitlabPush"){
                //     gitlab.ChangeCommitStatus(projectId,commitSha,"success")
                // }
@@ -112,22 +103,14 @@ pipeline{
         }
         failure{
             script{
-                println("failure")
-                //if ("${runOpts}" == "GitlabPush"){
-                //    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
-                //}
-                //toemail.Email("流水线失败了！")
+                //tools.PrintMes("failure","red")
                 tools.PrintMes("流水线失败了！","red")
             }
         }
         
         aborted{
             script{
-                println("aborted")
-               // if ("${runOpts}" == "GitlabPush"){
-               //     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
-               // }
-               //toemail.Email("流水线被取消了！")
+               //tools.PrintMes("aborted","red")
                tools.PrintMes("流水线被取消了！！","red")
             }
         
