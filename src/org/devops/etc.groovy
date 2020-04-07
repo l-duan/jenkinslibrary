@@ -6,11 +6,11 @@ def HttpReq(reqType,reqUrl,reqBody){
    // withCredentials([string(credentialsId: 'gitlab-token', variable: 'gitlabToken')]) {
       result = httpRequest 
    //   customHeaders: [[maskValue: true, name: 'PRIVATE-TOKEN', value: "${gitlabToken}"]], 
-                httpMode: reqType, 
+                httpMode: "{reqType}", 
                 contentType: "APPLICATION_JSON",
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true, 
-                requestBody: reqBody,
+                requestBody: "${reqBody}",
                 url: "${etcdServer}/${reqUrl}"
                 //quiet: true
    // }
