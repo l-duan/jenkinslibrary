@@ -12,7 +12,7 @@ def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
 def nexus = new org.devops.nexus()
 def artifactory = new org.devops.artifactory() 
-def respones = new.org.devops.etc()
+def respones = new org.devops.etc()
 
 //def runOpts
 //env
