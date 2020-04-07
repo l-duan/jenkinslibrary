@@ -12,8 +12,7 @@ def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
 def nexus = new org.devops.nexus()
 def artifactory = new org.devops.artifactory() 
-def respones = httpRequest httpMode: 'POST', requestBody: '{"key":"cHAyaG10"}', responseHandle: 'NONE', url: 'http://49.233.222.216:2376/v3/kv/range'
-
+def respones = new.org.devops.etc()
 
 //def runOpts
 //env
@@ -34,8 +33,8 @@ pipeline{
         stage("Prepare"){
             steps{
                 script{
-                    println('Status:'+respones.Status)
-                    println('Response:'+respones.content)
+                    result = respones.HttpReq('POST','/range','{"key":"cHAyaG10"}')
+                    tools.PrintMes("从etcd获取配置: "+result,"green")
                     tools.PrintMes("更新配置文件","green")
                 }
             }
