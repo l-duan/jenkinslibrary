@@ -34,7 +34,7 @@ pipeline{
             steps{
                 script{
                     result = respones.HttpReq('POST','/range','{"key":"cHAyaG10"}')
-                    tools.PrintMes("从etcd获取配置: "+result,"green")
+                    println(result)
                     tools.PrintMes("更新配置文件","green")
                 }
             }
