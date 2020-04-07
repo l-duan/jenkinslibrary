@@ -12,6 +12,7 @@ def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
 def nexus = new org.devops.nexus()
 def artifactory = new org.devops.artifactory() 
+def respones = httpRequest httpMode: 'POST', requestBody: '{"key":"cHAyaG10"}', responseHandle: 'NONE', url: 'http://49.233.222.216:2376/v3/kv/range'
 
 
 //def runOpts
@@ -33,7 +34,8 @@ pipeline{
         stage("Prepare"){
             steps{
                 script{
-                    httpRequest httpMode: 'POST', requestBody: '{"key":"cHAyaG10"}', responseHandle: 'NONE', url: 'http://49.233.222.216:2376/v3/kv/range'
+                    println('Status:'+respones.Status)
+                    println('Response:'+respones.content)
                     tools.PrintMes("更新配置文件","green")
                 }
             }
