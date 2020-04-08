@@ -41,7 +41,7 @@ pipeline{
                     keys = '{"key":"' + stringEncoded + '"}'
                     //println(keys)
                     response = etcd.HttpReq('POST','kv/range',keys).content
-                    def result = readJSON text: """${response}""", returnPojo: true
+                    def result = readJSON text: """${response}"""
                     //println(result)
                     for (props in result){
                         tools.PrintMes("-------: start","green")
