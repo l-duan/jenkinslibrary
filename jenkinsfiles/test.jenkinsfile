@@ -40,10 +40,11 @@ pipeline{
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
                     String keys = '{"key":"' + stringEncoded + '"}'
                     println(keys)
-                    String result = etcd.HttpReq('POST','kv/range',keys)
+                    String resonse = etcd.HttpReq('POST','kv/range',keys).content
+                    def result = readJSON text: """${response}"""
                     println(result)
-                    String value = etcd.parsesJsonToMaps(result)
-                    println(value)
+                    //String value = etcd.parsesJsonToMaps(result)
+                    //println(value)
                     tools.PrintMes("更新配置文件","green")
                 }
             }
