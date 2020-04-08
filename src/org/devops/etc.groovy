@@ -1,4 +1,5 @@
 package org.devops
+import groovy.json.JsonSlurper
 
 //封装HTTP请求
 def HttpReq(reqType,reqUrl,reqBody){
