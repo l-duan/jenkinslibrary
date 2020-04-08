@@ -40,7 +40,7 @@ pipeline{
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
                     String keys = '{"key":"' + stringEncoded + '"}'
                     println(keys)
-                    result = etcd.HttpReq('POST','kv/range',keys)
+                    String result = etcd.HttpReq('POST','kv/range',keys)
                     println(result)
                     String value = etcd.parsesJsonToMaps(result)
                     println(value)
