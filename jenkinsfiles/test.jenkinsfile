@@ -42,17 +42,10 @@ pipeline{
                     //println(keys)
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
-                    //println(result)
+                    println(result)
                     for (props in result){
-                        tools.PrintMes("-------: start","green")
                         println(props)
-                        //if (dictKey == "kvs"){
-                            //def kvs = readJSON text: """${dictKey}"""
-                          //  println(dictKey['value'])
-                        //}
                     }
-                        tools.PrintMes("-------: end","green")
-                    //}
                     //println(result["kvs"]["value"])
                     //String value = etcd.parsesJsonToMaps(result)
                     //println(value)
