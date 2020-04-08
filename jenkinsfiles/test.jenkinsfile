@@ -43,6 +43,7 @@ pipeline{
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
                     println(result)
+                    println(result["kvs"]["value"])
                     //String value = etcd.parsesJsonToMaps(result)
                     //println(value)
                     tools.PrintMes("更新配置文件","green")
