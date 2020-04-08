@@ -43,14 +43,13 @@ pipeline{
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}""", returnPojo: true
                     //println(result)
-                    //for (props in result){
+                    for (props in result){
                         tools.PrintMes("-------: start","green")
+                        println(props)
                         //if (dictKey == "kvs"){
                             //def kvs = readJSON text: """${dictKey}"""
                           //  println(dictKey['value'])
                         //}
-                    props.each { key, value ->
-                        echo "Walked through key $key and value $value"
                     }
                         tools.PrintMes("-------: end","green")
                     //}
