@@ -44,11 +44,12 @@ pipeline{
                     def result = readJSON text: """${response}"""
                     //println(result)
                     for (dictKey in result){
-                        //println(key['kvs'])
+                        tools.PrintMes("-------: start","green")
                         if (dictKey == "kvs"){
-                            
-                            println(dictKey['value'])
+                            def kvs = readJSON text: """${dictKey}"""
+                            println(kvs['value'])
                         }
+                        tools.PrintMes("-------: end","green")
                     }
                     //println(result["kvs"]["value"])
                     //String value = etcd.parsesJsonToMaps(result)
