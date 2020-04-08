@@ -24,3 +24,11 @@ def decodingString(content){
     byte[] decoded = new String(content.decodeBase64())
     return decoded
 }
+
+//解析JOSN text or reader content into groovy data structures
+def parsesJsonToMaps(jsonText){
+    def jsonSlurper = new JsonSlurper()
+    def object = jsonSlurper.parseText("${jsonText}")
+    assert object instanceof Map
+    return object.kvs.value 
+}
