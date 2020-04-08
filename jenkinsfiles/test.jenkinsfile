@@ -38,10 +38,12 @@ pipeline{
                     
                     tools.PrintMes("base64编码："+stringEncoded,"green")
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
-                    keys = '{"key":"' + stringEncoded + '"}'
+                    String keys = '{"key":"' + stringEncoded + '"}'
                     println(keys)
                     result = etcd.HttpReq('POST','kv/range',keys)
                     println(result)
+                    String value = etcd.parsesJsonToMaps(result)
+                    println(value)
                     tools.PrintMes("更新配置文件","green")
                 }
             }
