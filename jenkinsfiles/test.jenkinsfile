@@ -44,6 +44,7 @@ pipeline{
                     def result = readJSON text: """${response}"""
                     //println(result['header']['revision'])
                     gamesvrDetail = result['kvs'][0]['value']
+                    println("${gamesvrDetail}")
                     rlt = etcd.decodingString("${gamesvrDetail}")
                     println(rlt)
                     tools.PrintMes("更新配置文件","green")
