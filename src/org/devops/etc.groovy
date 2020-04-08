@@ -12,3 +12,15 @@ def HttpReq(reqType,reqUrl,reqBody){
                 //quiet: true
     return result
 }
+
+//base64编码
+def encodingString(content){
+    encoded = content.bytes.encodeBase64().toString()
+    return encoded
+}
+
+//base64解码
+def decodingString(content){
+    decoded = new String(content.decodeBase64())
+    return decoded
+}
