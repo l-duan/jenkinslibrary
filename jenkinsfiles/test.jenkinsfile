@@ -46,8 +46,8 @@ pipeline{
                     for (dictKey in result){
                         tools.PrintMes("-------: start","green")
                         if (dictKey == "kvs"){
-                            def kvs = readJSON text: """${dictKey}"""
-                            println(kvs['value'])
+                            //def kvs = readJSON text: """${dictKey}"""
+                            println(dictKey['value'])
                         }
                         tools.PrintMes("-------: end","green")
                     }
