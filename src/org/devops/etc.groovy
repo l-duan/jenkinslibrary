@@ -23,7 +23,7 @@ def encodingString(content){
 //base64解码
 def decodingString(content){
     byte[] decoded = content.decodeBase64()
-    assert result == new String(decoded)
+    result = new String(decoded)
     return result
 }
 
