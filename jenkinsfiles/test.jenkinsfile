@@ -37,7 +37,9 @@ pipeline{
                     stringEncoded = etcd.encodingString("${gameRegion}")
                     tools.PrintMes("base64编码："+stringEncoded,"green")
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
-                    result = etcd.HttpReq('POST','kv/range','{"key":stringEncoded}')
+                    keys = '{"key":'+stringEncoded+'}'
+                    println(keys)
+                    result = etcd.HttpReq('POST','kv/range',keys)
                     println(result)
                     tools.PrintMes("更新配置文件","green")
                 }
