@@ -42,8 +42,8 @@ pipeline{
                     //println(keys)
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
-                    println(result['header'])
-                    println(result['kvs'])
+                    println(result['header']['revision'])
+                    println(result['kvs'][0]['value'])
                     tools.PrintMes("更新配置文件","green")
                 }
             }
