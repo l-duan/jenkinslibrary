@@ -44,7 +44,7 @@ pipeline{
                     def result = readJSON text: """${response}"""
                     println(result)
                     for (key in result){
-                        println(key)
+                        println(key['kvs'])
                         //if (repo['path'] == "${projectName}"){
                     }
                     //println(result["kvs"]["value"])
