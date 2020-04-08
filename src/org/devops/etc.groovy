@@ -1,5 +1,4 @@
 package org.devops
-import groovy.json.JsonSlurper
 
 //封装HTTP请求
 def HttpReq(reqType,reqUrl,reqBody){
@@ -25,12 +24,4 @@ def decodingString(content){
     byte[] decoded = content.decodeBase64()
     result = new String(decoded)
     return result
-}
-
-//解析JOSN text or reader content into groovy data structures
-def parsesJsonToMaps(jsonText){
-    def jsonSlurper = new JsonSlurper()
-    def object = jsonSlurper.parseText("${jsonText}")
-    assert object instanceof Map
-    return object.kvs.value 
 }
