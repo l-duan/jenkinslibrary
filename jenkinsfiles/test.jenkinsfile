@@ -43,7 +43,7 @@ pipeline{
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
                     //println(result['header']['revision'])
-                    gamesvrDetail = result['kvs'][0]['value'])
+                    gamesvrDetail = result['kvs'][0]['value']
                     rlt = etcd.decodingString("${gamesvrDetail}")
                     println(rlt)
                     tools.PrintMes("更新配置文件","green")
