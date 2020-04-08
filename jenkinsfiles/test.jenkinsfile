@@ -38,9 +38,9 @@ pipeline{
                     
                     tools.PrintMes("base64编码："+stringEncoded,"green")
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
-                    String keys = '{"key":"' + stringEncoded + '"}'
+                    keys = '{"key":"' + stringEncoded + '"}'
                     println(keys)
-                    String resonse = etcd.HttpReq('POST','kv/range',keys).content
+                    response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
                     println(result)
                     //String value = etcd.parsesJsonToMaps(result)
