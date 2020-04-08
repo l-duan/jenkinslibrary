@@ -44,8 +44,9 @@ pipeline{
                     def result = readJSON text: """${response}"""
                     println(result)
                     for (key in result){
-                        println(key['kvs'])
-                        //if (repo['path'] == "${projectName}"){
+                        //println(key['kvs'])
+                        if (key == "kvs"){
+                            println(key['value'])
                     }
                     //println(result["kvs"]["value"])
                     //String value = etcd.parsesJsonToMaps(result)
