@@ -12,7 +12,7 @@ def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarapi()
 def nexus = new org.devops.nexus()
 def artifactory = new org.devops.artifactory() 
-def respones = new org.devops.etc()
+def etcd = new org.devops.etc()
 
 //def runOpts
 //env
@@ -22,6 +22,7 @@ String deployHosts = "${env.deployHosts}"
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 String artifactUrl = "${env.artifactUrl}"
+String gameRegion = "${env.gameRegion}"
 String userEmail = "duanlian@hrgame.com.cn"
 
 //pipeline
@@ -33,7 +34,9 @@ pipeline{
         stage("Prepare"){
             steps{
                 script{
-                    result = respones.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
+                    stringEncoded = etcd.encodingString("${gameRegion}")
+                    tools.PrintMes("base64编码："+stringEncoded,"green")
+                    result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
                     println(result)
                     tools.PrintMes("更新配置文件","green")
                 }
