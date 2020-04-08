@@ -39,14 +39,15 @@ pipeline{
                     tools.PrintMes("base64编码："+stringEncoded,"green")
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
                     keys = '{"key":"' + stringEncoded + '"}'
-                    println(keys)
+                    //println(keys)
                     response = etcd.HttpReq('POST','kv/range',keys).content
                     def result = readJSON text: """${response}"""
-                    println(result)
+                    //println(result)
                     for (dictKey in result){
                         //println(key['kvs'])
                         if (dictKey == "kvs"){
-                            println(key['value'])
+                            
+                            println(dictKey['value'])
                         }
                     }
                     //println(result["kvs"]["value"])
