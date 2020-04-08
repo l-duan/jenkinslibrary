@@ -40,17 +40,20 @@ pipeline{
                     //result = etcd.HttpReq('POST','kv/range','{"key":"cHAyaG10"}')
                     keys = '{"key":"' + stringEncoded + '"}'
                     //println(keys)
-                    response = etcd.HttpReq('POST','kv/range',keys).content
+                    response = etcd.HttpReq('POST','kv/range',keys).content, returnPojo: true
                     def result = readJSON text: """${response}"""
                     //println(result)
-                    for (dictKey in result){
+                    //for (props in result){
                         tools.PrintMes("-------: start","green")
-                        if (dictKey == "kvs"){
+                        //if (dictKey == "kvs"){
                             //def kvs = readJSON text: """${dictKey}"""
-                            println(dictKey['value'])
-                        }
-                        tools.PrintMes("-------: end","green")
+                          //  println(dictKey['value'])
+                        //}
+                    props.each { key, value ->
+                        echo "Walked through key $key and value $value"
                     }
+                        tools.PrintMes("-------: end","green")
+                    //}
                     //println(result["kvs"]["value"])
                     //String value = etcd.parsesJsonToMaps(result)
                     //println(value)
